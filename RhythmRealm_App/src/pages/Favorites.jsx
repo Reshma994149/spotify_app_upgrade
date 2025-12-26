@@ -1,12 +1,13 @@
+// src/pages/Favorites.jsx
 import React from "react";
+import { useSelector } from "react-redux";
+import TopPlay from "../components/TopPlay";
+import { songs } from "../redux/slices/playerSlice";
 
 const Favorites = () => {
-  return (
-    <div className="p-6">
-      <h2 className="text-3xl font-bold mb-3">❤️ Favorites</h2>
-      <p className="text-gray-300">Your saved songs will appear here.</p>
-    </div>
-  );
+  const favorites = useSelector((state) => state.player.favorites);
+  const favSongs = songs.filter((s) => favorites.includes(s.id));
+  return <TopPlay title="Favorites" songs={favSongs} />;
 };
 
 export default Favorites;

@@ -1,21 +1,10 @@
-import SongCard from "../components/SongCard";
-import { songs } from "../assets/mockSongs";
+// src/pages/Home.jsx
+import React from "react";
+import TopPlay from "../components/TopPlay";
+import { songs } from "../redux/slices/playerSlice";
 
-export default function Home() {
-  const handlePlay = (song) => {
-    console.log("Playing:", song.title);
-    // later connect this to global player
-  };
+const Home = () => {
+  return <TopPlay title="Home" songs={songs} />;
+};
 
-  return (
-    <div style={{ padding: "20px", color: "white" }}>
-      <h1>Home</h1>
-
-      <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-        {songs.map((song) => (
-          <SongCard key={song.id} song={song} onPlay={handlePlay} />
-        ))}
-      </div>
-    </div>
-  );
-}
+export default Home;
